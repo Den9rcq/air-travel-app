@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react"
+import Aside from "./ui/Aside"
+import Body from "./ui/Body"
 
-function App() {
+const App = () => {
   return (
-    <h1>Hello</h1>
-  );
+    <>
+      <Aside />
+      <Body />
+    </>
+  )
 }
 
-export default App;
+export default App
