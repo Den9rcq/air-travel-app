@@ -5,7 +5,7 @@ const Ticket = () => {
   return (
     <div className="ticket">
       <Direction/>
-      <div className="divider">Разделитель</div>
+      <div className="divider"/>
       <Direction/>
     </div>
   )

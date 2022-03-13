@@ -4,10 +4,10 @@ import Body from "./ui/Body"
 
 const App = () => {
   return (
-    <>
+    <div className="container">
       <Aside />
       <Body />
-    </>
+    </div>
   )
 }
 

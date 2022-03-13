@@ -3,12 +3,13 @@ import Card from "./Card"
 
 const Body = () => {
   return (
-    <>
+    <div>
       <ul>
         <Card/>
+        <Card/>
       </ul>
-      <button>Показать ещё</button>
-    </>
+      <button className="btn-more">Показать ещё</button>
+    </div>
   )
 }
 

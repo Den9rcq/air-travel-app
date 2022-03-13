@@ -3,10 +3,16 @@ import React from "react"
 const HeaderCard = () => {
   return (
     <div className="header-card">
-      <a href="#">Logo компании</a>
-      <div>
-        <span>Цена ₽</span>
-        <p>Стоимость одного взрослого билета</p>
+      <a href="#"
+        className="header-logo">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png"
+          alt="logo" />
+      </a>
+
+      <div className="header-price">
+        <span>21049 ₽</span>
+        <p>Стоимость для одного взрослого пассажира</p>
       </div>
     </div>
   )

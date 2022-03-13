@@ -6,12 +6,12 @@ import AirlineSorting from "./AirlineSorting"
 
 const Aside = () => {
   return (
-    <>
+    <div className="aside">
       <Sort />
       <Filter />
       <ByPrice />
       <AirlineSorting />
-    </>
+    </div>
   )
 }
 

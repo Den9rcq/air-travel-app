@@ -4,12 +4,12 @@ import Ticket from "./Card/Ticket"
 
 const Card = () => {
   return (
-    <li>
+    <li className="card">
       <HeaderCard />
       <div className="round-trip">
         <Ticket/>
       </div>
-      <button>Выбрать</button>
+      <button className="btn">Выбрать</button>
     </li>
   )
 }
