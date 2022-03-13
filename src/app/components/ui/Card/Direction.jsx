@@ -5,11 +5,11 @@ const Direction = () => {
     <div className="ticket-info">
       <div className="direction">
         <div className="flight-direction">
-          <p>Москва, ШЕРЕМЕТЬЕВО <span>(SVO)</span></p>
+          <p>ЛОНДОН, Лондон, Хитроу <span>(LHR)</span></p>
         </div>
         <div className="arrow">{"->"}</div>
         <div className="flight-direction">
-          <p>ЛОНДОН, Лондон, Хитроу <span>(LHR)</span></p>
+          <p>Москва, ШЕРЕМЕТЬЕВО <span>(SVO)</span></p>
         </div>
       </div>
       <div className="flight-time">
