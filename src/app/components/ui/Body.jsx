@@ -6,7 +6,6 @@ const Body = () => {
     <div>
       <ul>
         <Card/>
-        <Card/>
       </ul>
       <button className="btn-more">Показать ещё</button>
     </div>

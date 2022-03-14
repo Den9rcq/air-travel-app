@@ -11,7 +11,7 @@ const HeaderCard = () => {
       </a>
 
       <div className="header-price">
-        <span>21049 ₽</span>
+        <span>12304 ₽</span>
         <p>Стоимость для одного взрослого пассажира</p>
       </div>
     </div>
