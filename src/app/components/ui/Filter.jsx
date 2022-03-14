@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { filterTransferChange } from "../../store/flightsSlice"
 
 const Filter = () => {
 
@@ -6,6 +8,11 @@ const Filter = () => {
     oneChange: false,
     nonStop: false
   })
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(filterTransferChange(checked))
+  }, [checked])
 
   const changeCheckbox = ({ target }) => {
     setChecked(prevState => {

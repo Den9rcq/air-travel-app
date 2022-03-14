@@ -1,10 +1,14 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { sortChanged } from "../../store/flightsSlice"
 
 const Sort = () => {
   const [value, setValue] = useState("ascending")
+  const dispatch = useDispatch()
 
   const changeValue = ({ target }) => {
     setValue(target.value)
+    dispatch(sortChanged(target.value))
   }
 
   return (

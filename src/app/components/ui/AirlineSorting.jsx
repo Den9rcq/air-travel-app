@@ -1,17 +1,47 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchAirlines, getAirlines } from "../../store/airlinesSlice"
+import { getShortName } from "../../helpers/getShortName"
+import { selectedAirlineChanged } from "../../store/flightsSlice"
 
 const AirlineSorting = () => {
+  const [checked, setChecked] = useState({})
+  const dispatch = useDispatch()
+  const airlines = useSelector(getAirlines)
+
+  useEffect(() => {
+    dispatch(fetchAirlines())
+  }, [])
+
+  useEffect(() => {
+    dispatch(selectedAirlineChanged(checked))
+  }, [checked])
+
+  const changeCheckbox = ({ target }) => {
+    setChecked(prevState => {
+      return {
+        ...prevState,
+        [target.name]: !prevState[target.name]
+      }
+    })
+  }
+
 
   return (
     <fieldset>
       <legend>Авиакомпании</legend>
       <ul>
-        <li>
-          <label>
-            <input type="checkbox" name="name" />
-            - (название компании) от (минимальная цена билета)
-          </label>
-        </li>
+        {airlines && (airlines.map(({name, price}) => (
+          <li key={name}>
+            <label>
+              <input
+                type="checkbox"
+                name={name}
+                onChange={(e) => changeCheckbox(e)}/>
+              - {getShortName(name)} от {price}
+            </label>
+          </li>
+        )))}
       </ul>
     </fieldset>
   )

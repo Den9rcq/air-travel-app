@@ -9,9 +9,9 @@ const flightsAdapter = createEntityAdapter({
 const initialState = flightsAdapter.getInitialState({
   flightsLoadingStatus: "loading",
   sort: "ascending",
-  filter: null,
+  filterTransfer: null,
   sortByPrice: null,
-  activeAirline: null
+  selectedAirline: null
 })
 
 export const fetchFlights = createAsyncThunk(
@@ -25,7 +25,17 @@ export const fetchFlights = createAsyncThunk(
 const flightsSlice = createSlice({
   name: "flights",
   initialState,
-  reducers: {},
+  reducers: {
+    sortChanged: (state, action) => {
+      state.sort = action.payload
+    },
+    filterTransferChange: (state, action) => {
+      state.filterTransfer = action.payload
+    },
+    selectedAirlineChanged: (state, action) => {
+      state.selectedAirline = action.payload
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchFlights.pending, state => {
@@ -41,7 +51,8 @@ const flightsSlice = createSlice({
   }
 })
 
-const { reducer } = flightsSlice
+const { reducer, actions } = flightsSlice
+export const { sortChanged, filterTransferChange, selectedAirlineChanged } = actions
 
 
 export default reducer

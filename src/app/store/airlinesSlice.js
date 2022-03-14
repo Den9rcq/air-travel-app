@@ -1,12 +1,11 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit"
 import useFlightsServices from "../services/FlightsServices"
 
-
 const airlinesAdapter = createEntityAdapter({
   selectId: airline => airline.name
 })
 const initialState = airlinesAdapter.getInitialState({
-  airlinesLoadingStatus: "loading"
+  airlinesLoadingStatus: "loading",
 })
 
 export const fetchAirlines = createAsyncThunk(
@@ -38,5 +37,6 @@ const airlinesSlice = createSlice({
 
 const { reducer } = airlinesSlice
 
+export const { selectAll: getAirlines } = airlinesAdapter.getSelectors(state => state.airlines)
 
 export default reducer
