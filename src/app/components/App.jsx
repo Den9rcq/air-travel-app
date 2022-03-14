@@ -3,7 +3,7 @@ import Aside from "./ui/Aside"
 import Body from "./ui/Body"
 
 const App = () => {
-  
+
   return (
     <div className="container">
       <Aside />
