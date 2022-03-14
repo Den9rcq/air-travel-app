@@ -1,7 +1,14 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Card from "./Card"
+import { useDispatch } from "react-redux"
+import { fetchFlights } from "../../store/flightsSlice"
 
 const Body = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchFlights())
+  }, [])
   return (
     <div>
       <ul>
