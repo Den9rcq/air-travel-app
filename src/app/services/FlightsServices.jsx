@@ -1,6 +1,7 @@
 import { useHttp } from "../hooks/useHttp"
 import { transformData } from "../helpers/transformData"
 import { sortingAirlinesByBestPrice } from "../helpers/sortingAirlinesByBestPrice"
+import { getNumberFromPrice } from "../helpers/getNumberFromPrice"
 
 const useFlightsServices = () => {
   const _apiBase = "http://localhost:3001/result/"
@@ -11,7 +12,7 @@ const useFlightsServices = () => {
     return flights.map(flight => {
       return {
         id: flight.flightToken,
-        price: flight.flight.price.passengerPrices[0].total.amount,
+        price: getNumberFromPrice(flight.flight.price.passengerPrices[0].total.amount),
         flightThere: transformData(flight.flight.legs[0].segments),
         flightBack: transformData(flight.flight.legs[1].segments),
         carrier: flight.flight.carrier.caption

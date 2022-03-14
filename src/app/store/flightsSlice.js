@@ -1,4 +1,4 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit"
 import useFlightsServices from "../services/FlightsServices"
 
 
@@ -32,6 +32,9 @@ const flightsSlice = createSlice({
     filterTransferChange: (state, action) => {
       state.filterTransfer = action.payload
     },
+    sortByPriceChanged: (state, action) => {
+      state.sortByPrice = action.payload
+    },
     selectedAirlineChanged: (state, action) => {
       state.selectedAirline = action.payload
     }
@@ -52,8 +55,12 @@ const flightsSlice = createSlice({
 })
 
 const { reducer, actions } = flightsSlice
-export const { sortChanged, filterTransferChange, selectedAirlineChanged } = actions
+export const { sortChanged, filterTransferChange, sortByPriceChanged, selectedAirlineChanged } = actions
 
+export const {selectAll: getFlights} = flightsAdapter.getSelectors(state => state.flights)
+export const getMaxPriceFlight = createSelector(getFlights, state => {
+  return state.map(item => item.price).pop()
+})
 
 export default reducer
 

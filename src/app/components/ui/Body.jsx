@@ -1,13 +1,13 @@
 import React, { useEffect } from "react"
 import Card from "./Card"
-// import { useDispatch } from "react-redux"
-// import { fetchFlights } from "../../store/flightsSlice"
+import { useDispatch } from "react-redux"
+import { fetchFlights } from "../../store/flightsSlice"
 
 const Body = () => {
-  // const dispatch = useDispatch()
-
+  // const flights = useSelector(getFlights)
+  const dispatch = useDispatch()
   useEffect(() => {
-    // dispatch(fetchFlights())
+    dispatch(fetchFlights())
   }, [])
   return (
     <div>
