@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
 import Card from "./Card"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchFlights, getFilterFlights } from "../../store/flightsSlice"
+import { fetchFlights, getCountFlights, setCountFlights } from "../../store/flightsSlice"
 
 const Body = () => {
-  const flights = useSelector(getFilterFlights)
+  const flights = useSelector(getCountFlights)
   const dispatch = useDispatch()
   console.log(flights)
   useEffect(() => {
@@ -13,9 +13,9 @@ const Body = () => {
   return (
     <div>
       <ul>
-        <Card/>
+        {flights.map(item => <Card key={item.id}/>)}
       </ul>
-      <button className="btn-more">Показать ещё</button>
+      <button onClick={() => dispatch(setCountFlights())} className="btn-more">Показать ещё</button>
     </div>
   )
 }

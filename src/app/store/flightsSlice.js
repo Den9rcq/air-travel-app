@@ -12,7 +12,8 @@ const initialState = flightsAdapter.getInitialState({
   sort: "ascending",
   filterTransfer: null,
   sortByPrice: null,
-  selectedAirline: null
+  selectedAirline: null,
+  countFlights: 2
 })
 
 export const fetchFlights = createAsyncThunk(
@@ -38,6 +39,9 @@ const flightsSlice = createSlice({
     },
     selectedAirlineChanged: (state, action) => {
       state.selectedAirline = action.payload
+    },
+    setCountFlights: (state) => {
+      state.countFlights += 2
     }
   },
   extraReducers: builder => {
@@ -56,7 +60,7 @@ const flightsSlice = createSlice({
 })
 
 const { reducer, actions } = flightsSlice
-export const { sortChanged, filterTransferChange, sortByPriceChanged, selectedAirlineChanged } = actions
+export const { sortChanged, filterTransferChange, sortByPriceChanged, selectedAirlineChanged, setCountFlights } = actions
 
 export const { selectAll: getFlights } = flightsAdapter.getSelectors(state => state.flights)
 export const getMaxPriceFlight = createSelector(getFlights, state => {
@@ -68,6 +72,14 @@ export const getFilterFlights = createSelector(
   (flights, sortStatus) => {
     return flightSorting(flights, sortStatus)
   })
+
+export const getCountFlights = createSelector(
+  getFilterFlights,
+  state => state.flights.countFlights,
+  (flights, count) => {
+    return flights.slice(0, count)
+  }
+)
 
 export default reducer
 
