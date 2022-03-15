@@ -1,11 +1,12 @@
 import React, { useEffect } from "react"
 import Card from "./Card"
-import { useDispatch } from "react-redux"
-import { fetchFlights } from "../../store/flightsSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchFlights, getFilterFlights } from "../../store/flightsSlice"
 
 const Body = () => {
-  // const flights = useSelector(getFlights)
+  const flights = useSelector(getFilterFlights)
   const dispatch = useDispatch()
+  console.log(flights)
   useEffect(() => {
     dispatch(fetchFlights())
   }, [])
