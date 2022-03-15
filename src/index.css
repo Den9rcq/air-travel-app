@@ -127,6 +127,14 @@ fieldset ul li input {
   padding: 0 20px;
 }
 
+.transfer-divider-null {
+  width: 90%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, .2);
+  text-align: center;
+  margin: 20px auto;
+}
+
 .transfer-divider {
   position: relative;
   text-align: center;

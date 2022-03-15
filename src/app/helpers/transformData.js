@@ -8,6 +8,7 @@ export const transformData = (arr) => {
       arrivalCity: arr[0].arrivalCity,
       arrivalDate: arr[0].arrivalDate,
       travelDuration: arr[0].travelDuration,
+      carrier: arr[0].airline.caption,
       transfers: 0
     }
   } else {
@@ -19,6 +20,7 @@ export const transformData = (arr) => {
       arrivalCity: arr[1].arrivalCity,
       arrivalDate: arr[1].arrivalDate,
       travelDuration: arr[0].travelDuration + arr[1].travelDuration,
+      carrier: arr[1].airline.caption,
       transfers: 1
     }
   }

@@ -15,7 +15,6 @@ const useFlightsServices = () => {
         price: getNumberFromPrice(flight.flight.price.passengerPrices[0].total.amount),
         flightThere: transformData(flight.flight.legs[0].segments),
         flightBack: transformData(flight.flight.legs[1].segments),
-        carrier: flight.flight.carrier.caption
       }
     })
   }

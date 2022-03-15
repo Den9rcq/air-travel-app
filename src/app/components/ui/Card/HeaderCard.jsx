@@ -1,6 +1,7 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-const HeaderCard = () => {
+const HeaderCard = ({ price }) => {
   return (
     <div className="header-card">
       <a href="#"
@@ -11,11 +12,15 @@ const HeaderCard = () => {
       </a>
 
       <div className="header-price">
-        <span>12304 ₽</span>
+        <span>{price} ₽</span>
         <p>Стоимость для одного взрослого пассажира</p>
       </div>
     </div>
   )
+}
+
+HeaderCard.propTypes = {
+  price: PropTypes.number
 }
 
 export default HeaderCard

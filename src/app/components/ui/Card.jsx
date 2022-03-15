@@ -1,17 +1,22 @@
 import React from "react"
 import HeaderCard from "./Card/HeaderCard"
 import Ticket from "./Card/Ticket"
+import PropTypes from "prop-types"
 
-const Card = () => {
+const Card = (props) => {
   return (
     <li className="card">
-      <HeaderCard />
+      <HeaderCard price={props.price}/>
       <div className="round-trip">
-        <Ticket/>
+        <Ticket {...props}/>
       </div>
-      <button className="btn">Выбрать</button>
+      <button onClick={() => console.log("asd")} className="btn">Выбрать</button>
     </li>
   )
+}
+
+Card.propTypes = {
+  price: PropTypes.number
 }
 
 export default Card
