@@ -14,7 +14,7 @@ const AirlineSorting = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(selectedAirlineChanged(checked))
+    dispatch(selectedAirlineChanged(checkedTransform(checked)))
   }, [checked])
 
   const changeCheckbox = ({ target }) => {
@@ -26,6 +26,15 @@ const AirlineSorting = () => {
     })
   }
 
+  const checkedTransform = (obj) => {
+    let array = []
+    for (const objKey in obj) {
+      if (obj[objKey]) {
+        array.push(objKey)
+      }
+    }
+    return array
+  }
 
   return (
     <fieldset>

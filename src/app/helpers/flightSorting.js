@@ -11,7 +11,7 @@ export const flightSorting = (flights, sortStatus) => {
     return [...flights].sort((a, b) => {
       const totalFlightThere = (item) => getTravelTime(item.flightThere.arrivalDate, item.flightThere.departureDate)
       const totalFlightBack = (item) => getTravelTime(item.flightBack.arrivalDate, item.flightBack.departureDate)
-      
+
       return (totalFlightBack(a) + totalFlightThere(a)) - (totalFlightBack(b) + totalFlightThere(b))
     })
   default:

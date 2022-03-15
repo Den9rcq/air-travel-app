@@ -3,7 +3,6 @@ import Direction from "./Direction"
 import PropTypes from "prop-types"
 
 const Ticket = ({ flightThere, flightBack }) => {
-  console.log(flightThere)
   return (
     <div className="ticket">
       <Direction {...flightThere} />
