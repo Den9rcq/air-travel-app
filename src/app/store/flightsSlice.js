@@ -75,9 +75,13 @@ export const {
 } = actions
 
 export const { selectAll: getFlights } = flightsAdapter.getSelectors(state => state.flights)
+
+// Получаем макс цену билета
 export const getMaxPriceFlight = createSelector(getFlights, state => {
   return state.map(item => item.price).pop()
 })
+
+// Получаем отсортированные перелёты по (цене или времени в пути)
 const getFilterFlights = createSelector(
   getFlights,
   state => state.flights.sort,
@@ -85,6 +89,7 @@ const getFilterFlights = createSelector(
     return flightSorting(flights, sortStatus)
   })
 
+// Получаем отсортированный список перелётов с учётом пересадок
 const getFilterTransfer = createSelector(
   getFilterFlights,
   state => state.flights.filterTransfer,
@@ -104,6 +109,7 @@ const getFilterTransfer = createSelector(
   }
 )
 
+// Получаем список перелётов по цене
 const getFilterByPrice = createSelector(
   getFilterTransfer,
   state => state.flights.sortByPrice,
@@ -115,6 +121,7 @@ const getFilterByPrice = createSelector(
   }
 )
 
+// Получаем список перелётов с учётом выбранных авиакомпаний
 const getFilterByAirlines = createSelector(
   getFilterByPrice,
   state => state.flights.selectedAirline,
@@ -135,6 +142,7 @@ const getFilterByAirlines = createSelector(
   }
 )
 
+// Получаем список перелётов в определённом кол-ве
 export const getCountFlights = createSelector(
   getFilterByAirlines,
   state => state.flights.countFlights,

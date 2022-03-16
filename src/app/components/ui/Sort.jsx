@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { sortChanged } from "../../store/flightsSlice"
+import MyInput from "../common/MyInput"
 
 const Sort = () => {
   const [value, setValue] = useState("ascending")
@@ -15,42 +16,29 @@ const Sort = () => {
     <fieldset>
       <legend>Сортировать</legend>
       <ul>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="ascending"
-              onChange={(e) => changeValue(e)}
-              checked={value === "ascending"}
-            />
-            - по возрастанию
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="descending"
-              onChange={(e) => changeValue(e)}
-              checked={value === "descending"}
-            />
-            - по убыванию
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="time"
-              onChange={(e) => changeValue(e)}
-              checked={value === "time"}
-            />
-            - по времени в пути
-          </label>
-        </li>
+        <MyInput
+          type="radio"
+          name="price"
+          value="ascending"
+          label="- по возрастанию"
+          meaning={value}
+          handleChange={changeValue}/>
+        <MyInput
+          type="radio"
+          name="price"
+          value="descending"
+          label="- по убыванию"
+          meaning={value}
+          handleChange={changeValue}
+        />
+        <MyInput
+          type="radio"
+          name="price"
+          value="time"
+          label="- по времени в пути"
+          meaning={value}
+          handleChange={changeValue}
+        />
       </ul>
     </fieldset>
   )

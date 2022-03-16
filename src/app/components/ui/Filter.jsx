@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { filterTransferChange } from "../../store/flightsSlice"
+import MyInput from "../common/MyInput"
 
 const Filter = () => {
 
@@ -27,28 +28,20 @@ const Filter = () => {
     <fieldset>
       <legend>Фильтровать</legend>
       <ul>
-        <li>
-          <label>
-            <input
-              type="checkbox"
-              name="oneChange"
-              onChange={(e) => changeCheckbox(e)}
-              checked={checked.oneChange}
-            />
-            - 1 пересадка
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type="checkbox"
-              name="nonStop"
-              onChange={(e) => changeCheckbox(e)}
-              checked={checked.nonStop}
-            />
-            - без пересадок
-          </label>
-        </li>
+        <MyInput
+          type="checkbox"
+          name="oneChange"
+          label="- 1 пересадка"
+          handleChange={changeCheckbox}
+          meaning={checked}
+        />
+        <MyInput
+          type="checkbox"
+          name="nonStop"
+          label="- без пересадок"
+          handleChange={changeCheckbox}
+          meaning={checked}
+        />
       </ul>
     </fieldset>
   )

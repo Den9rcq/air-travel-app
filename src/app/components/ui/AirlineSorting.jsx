@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchAirlines, getAirlines } from "../../store/airlinesSlice"
 import { getShortName } from "../../helpers/getShortName"
 import { selectedAirlineChanged } from "../../store/flightsSlice"
+import MyInput from "../common/MyInput"
 
 const AirlineSorting = () => {
   const [checked, setChecked] = useState({})
@@ -41,15 +42,14 @@ const AirlineSorting = () => {
       <legend>Авиакомпании</legend>
       <ul>
         {airlines && (airlines.map(({name, price}) => (
-          <li key={name}>
-            <label>
-              <input
-                type="checkbox"
-                name={name}
-                onChange={(e) => changeCheckbox(e)}/>
-              - {getShortName(name)} от {price}
-            </label>
-          </li>
+          <MyInput
+            key={name}
+            type="checkbox"
+            name={name}
+            label={`${getShortName(name)} от ${price}`}
+            meaning={checked}
+            handleChange={changeCheckbox}
+          />
         )))}
       </ul>
     </fieldset>

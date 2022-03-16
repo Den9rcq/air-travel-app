@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMaxPriceFlight, sortByPriceChanged } from "../../store/flightsSlice"
+import MyInput from "../common/MyInput"
 
 const ByPrice = () => {
 
@@ -25,10 +26,10 @@ const ByPrice = () => {
         }
       } else if (target.value <= 0) {
         return {
-          ...prevState,
-          min: 0
+          max: "",
+          min: ""
         }
-      } else if (prevState.max === "") {
+      } else if (prevState.max === "" && prevState.min !== "") {
         return {
           min: Number(target.value),
           max: maxPrice
@@ -46,32 +47,24 @@ const ByPrice = () => {
     <fieldset>
       <legend>Цена</legend>
       <ul>
-        <li>
-          <label>
-            От
-            <input
-              type="number"
-              name="min"
-              value={range.min}
-              min={0}
-              placeholder="0"
-              onChange={(e) => changeRange(e)}
-            />
-          </label>
-        </li>
-        <li>
-          <label>
-            До
-            <input
-              type="number"
-              name="max"
-              placeholder={maxPrice}
-              value={range.max}
-              max={maxPrice}
-              onChange={(e) => changeRange(e)}
-            />
-          </label>
-        </li>
+        <MyInput
+          type="number"
+          name="min"
+          value={range.min}
+          label="От"
+          min={0}
+          placeholder="0"
+          handleChange={changeRange}
+        />
+        <MyInput
+          type="number"
+          name="max"
+          value={range.max}
+          label="До"
+          max={maxPrice}
+          placeholder={maxPrice}
+          handleChange={changeRange}
+        />
       </ul>
     </fieldset>
   )
